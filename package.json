@@ -1,0 +1,21 @@
+{
+  "name": "inertia",
+  "version": "1.0.0",
+  "description": "A JavaScript physics engine",
+  "main": "lib/inertia.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "2D",
+    "physics",
+    "JavaScript"
+  ],
+  "author": "João Pedro Albuquerque de Barros",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-eslint": "^21.0.0"
+  }
+}
