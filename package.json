@@ -13,7 +13,9 @@
   ],
   "author": "João Pedro Albuquerque de Barros",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "browserify": "^16.2.3"
+  },
   "devDependencies": {
     "grunt": "^1.0.3",
     "grunt-eslint": "^21.0.0"

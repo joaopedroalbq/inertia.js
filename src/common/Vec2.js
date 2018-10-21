@@ -1,3 +1,4 @@
+export default Vec2;
 
 /**
  * Represents a 2D vector
@@ -64,7 +65,7 @@ Vec2.prototype.divide = function (n) {
 };
 
 /**
- * The dot product of two vectors
+ * The dot product of two vectors (Angle between two vectors)
  * @param {Object} vec 
  * @returns {number}
  */
@@ -73,7 +74,7 @@ Vec2.prototype.dot = function (vec) {
 };
 
 /**
- * The cross product of two vectors
+ * The cross product of two vectors (Find)
  * @param {Object} vec 
  * @returns {number}
  */
