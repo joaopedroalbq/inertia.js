@@ -1,2 +1,2 @@
 # inertia.js
-JavaScript 2D physics library
+JavaScript 2D physics engine
