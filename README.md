@@ -1,2 +1,5 @@
 # inertia.js
-JavaScript 2D physics engine
+A JavaScript 2D physics engine
+
+## Description
+Working on it...
