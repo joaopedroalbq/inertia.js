@@ -1,5 +1,3 @@
-export default Vec2;
-
 /**
  * Represents a 2D vector
  * @constructor
@@ -140,3 +138,5 @@ Vec2.prototype.rotate = function (center, angle) {
 	const ry = (x * Math.sin(angle) + y * Math.cos(angle)) + center.y;
 	return new Vec2(rx, ry);
 };
+
+module.exports = Vec2;

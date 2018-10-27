@@ -1,33 +1,52 @@
-import Body from "./Body.js";
-import Vec2 from "../common/Vec2.js";
+const Body = require("./Body.js");
+const Vec2 = require("../common/Vec2.js");
 
-export default Rectangle;
 
 class Rectangle extends Body {
-	constructor(center, width, height) {
-		super(center);
+
+	constructor(coords, width, height) {
+		super(coords);
 		this.type = "Rectangle";
 		this.width = width;
 		this.height = height;
 		this.vertices = [];
-		this.faceNormal = [];
+		this.faceNormals = [];
 		this.vertices.push(
-			new Vec2(this.center - this.width / 2, this.center - this.height / 2),
-			new Vec2(this.center + this.width / 2, this.center - this.height / 2),
-			new Vec2(this.center + this.width / 2, this.center + this.height / 2),
-			new Vec2(this.center - this.width / 2, this.center + this.height / 2)
+			new Vec2(this.coords - this.width / 2, this.coords - this.height / 2),
+			new Vec2(this.coords + this.width / 2, this.coords - this.height / 2),
+			new Vec2(this.coords + this.width / 2, this.coords + this.height / 2),
+			new Vec2(this.coords - this.width / 2, this.coords + this.height / 2)
 		);
-		this.faceNormal[0] = this.vertices[1].subtract(this.vertices[2]).normalize();
-		this.faceNormal[1] = this.vertices[2].subtract(this.vertices[3]).normalize();
-		this.faceNormal[2] = this.vertices[3].subtract(this.vertices[0]).normalize();
-		this.faceNormal[3] = this.vertices[0].subtract(this.vertices[1]).normalize();
+		this.normalizeFaces();
 	}
 
-	draw(context){
+	normalizeFaces() {
+		this.faceNormals[0] = this.vertices[1].subtract(this.vertices[2]).normalize();
+		this.faceNormals[1] = this.vertices[2].subtract(this.vertices[3]).normalize();
+		this.faceNormals[2] = this.vertices[3].subtract(this.vertices[0]).normalize();
+		this.faceNormals[3] = this.vertices[0].subtract(this.vertices[1]).normalize();
+	}
+
+	move(v) {
+		this.coords = this.coords.add(v);
+		this.vertices.forEach(vertice => vertice = vertice.add(v));
+		this.normalizeFaces();
+	}
+
+	rotate(angle){
+		this.angle += angle;
+		this.vertices.forEach(vertice => vertice = vertice.rotate(angle));
+		this.normalizeFaces();
+	}
+
+	draw(context) {
 		context.save();
-		context.translate(this.vertices[0].x, this.vertices[0].y);
+		context.translate(this.coords.x, this.coords.y);
 		context.rotate(this.angle);
 		context.strokeRect(0, 0, this.width, this.height);
 		context.restore();
 	}
+
 }
+
+module.exports = Rectangle;

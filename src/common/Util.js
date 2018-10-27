@@ -1,5 +1,3 @@
-export default Util;
-
 const Util = {};
 
 Util.startTime = new Date();
@@ -42,3 +40,5 @@ Util.shuffle = function (array) {
 Util.indexOf = function (array, obj) {
 	//TODO
 };
+
+module.exports = Util;

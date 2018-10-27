@@ -1,29 +1,38 @@
-export default World;
-
 class World {
+
 	constructor(options) {
-		const defaults = {
+		const props = {
 			bodies: [],
+			gravity: {
+				x: 0,
+				y: 7
+			},
 			bounds: {
 				x: Infinity,
 				y: Infinity
 			}
 		};
 
-		const world = Object.assign(defaults, options);
+		Object.assign(props, options);
+		Object.assign(this, props);		
 	}
 
-	addBody(body) {
-		this.bodies.push(body);
+	add(body) {
+		if(typeof body === "undefined") return "Argument must be type of Body or an Array(Body)";
+		Array.isArray(body) ? body.forEach(body => this.bodies.push(body)): this.body.push(body);
 	}
 
 	removeBody() {
 		//TODO
 	}
 
-	update() {
+	update(context) {
 		this.bodies.forEach(body => {
-			body.update();
+			body.update(this);
+			body.draw(context);
 		});
 	}
+	
 }
+
+module.exports = World;

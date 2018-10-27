@@ -1,11 +1,17 @@
-import World from "../World.js";
-
-export default Body;
+const Vec2 = require("../common/Vec2.js");
 
 class Body {
-	constructor(center) {
-		this.center = center;
+
+	constructor(coords) {
+		this.coords = new Vec2(coords.x, coords.y);
 		this.angle = 0;
-		World.addBody(this);
 	}
+	
+	update(world){
+		if(this.coords.y < world.bounds.y)
+			this.move(world.gravity);
+	}
+
 }
+
+module.exports = Body;
